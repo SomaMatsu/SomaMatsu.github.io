@@ -1,346 +1,185 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>松本 宗真 | 研究者ホームページ</title>
-  <meta name="description" content="Researcher homepage of Soma Matsumoto / 松本 宗真 研究者ホームページ">
-  <script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>松本 宗真 / Soma Matsumoto</title>
+<style>
+  body {
+    margin: 0;
+    background: #fdfdfc;
+    color: #222;
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .page { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+  a { color: #1a5a96; }
+  a:hover { color: #0d3a66; }
 
-  https://fonts.googleapis.com
-  https://fonts.gstatic.com
-  https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap
+  /* 言語切り替え */
+  html[lang="ja"] [data-lang="en"],
+  html[lang="en"] [data-lang="ja"] { display: none; }
 
-  <style>
-    :root {
-      --bg: #ffffff;
-      --bg-alt: #f6f9fd;
-      --text: #2a2f3a;
-      --muted: #7a8190;
-      --line: #e9edf3;
-      --accent: #2f6fde;
-      --accent-soft: #eaf1fd;
-      --radius: 16px;
-      --maxw: 1040px;
-      --serif-en: "Cormorant Garamond", "Noto Serif JP", serif;
-      --serif-ja: "Noto Serif JP", serif;
-      --sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.85; -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    img { max-width: 100%; display: block; }
+  .top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #ddd; padding-bottom: 12px; }
+  .top h1 { margin: 0; font-size: 1.6em; font-weight: 600; letter-spacing: .02em; }
+  .top h1 small { font-size: .55em; font-weight: 400; color: #777; margin-left: .6em; }
+  .switch { font-size: .9em; color: #999; white-space: nowrap; }
+  .switch button { border: 0; background: none; padding: 0 2px; font: inherit; color: #1a5a96; cursor: pointer; text-decoration: underline; }
+  .switch button.on { color: #222; text-decoration: none; font-weight: 600; cursor: default; }
 
-    /* 言語切り替え */
-    html[lang="ja"] [data-lang="en"],
-    html[lang="en"] [data-lang="ja"] { display: none !important; }
+  .profile { display: flex; gap: 28px; margin: 32px 0 8px; }
+  .photo { flex: 0 0 160px; }
+  .photo img { width: 160px; height: 200px; object-fit: cover; display: block; border: 1px solid #ddd; }
+  .profile p { margin: 0 0 .6em; }
+  .affil { color: #555; }
+  .links { font-size: .95em; }
+  .links a { margin-right: 1em; }
+  @media (max-width: 600px) {
+    .profile { flex-direction: column; gap: 16px; }
+    .top { flex-direction: column; gap: 6px; }
+  }
 
-    /* Header */
-    header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-    .nav { max-width: var(--maxw); margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { font-family: var(--serif-en); font-size: 1.35rem; font-weight: 600; color: var(--text); }
-    html[lang="ja"] .brand { font-family: var(--serif-ja); font-size: 1.1rem; }
-    .brand:hover { text-decoration: none; color: var(--accent); }
-    .nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: .88rem; }
-    .nav-links a { color: var(--muted); }
-    .nav-links a:hover { color: var(--accent); text-decoration: none; }
-    .lang-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: #fff; }
-    .lang-toggle button { border: 0; background: transparent; color: var(--muted); cursor: pointer; font: 500 .78rem var(--sans); padding: 5px 12px; border-radius: 999px; }
-    .lang-toggle button[aria-pressed="true"] { background: var(--accent); color: #fff; }
-    @media (max-width: 760px) { .nav-links { display: none; } }
+  h2 { font-size: 1.15em; font-weight: 600; margin: 44px 0 12px; padding-bottom: 4px; border-bottom: 1px solid #ddd; }
+  ul, ol { padding-left: 1.4em; margin: 0; }
+  li { margin-bottom: .5em; }
+  .pubs li { margin-bottom: .9em; }
+  .pubs .t { font-weight: 600; }
+  .pubs .v { font-style: italic; }
+  .pubs .x { font-size: .9em; }
+  .pubs .x a { margin-right: .7em; }
 
-    /* Layout */
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-    section { padding: 80px 0; }
-    section.alt { background: var(--bg-alt); }
-    h2 { font-family: var(--serif-en); font-weight: 600; font-size: 2rem; margin: 0 0 36px; display: flex; align-items: baseline; gap: 14px; }
-    html[lang="ja"] h2 { font-family: var(--serif-ja); font-size: 1.55rem; }
-    h2 .num { font: 600 .8rem var(--sans); color: var(--accent); letter-spacing: .12em; }
+  table { border-collapse: collapse; width: 100%; }
+  td { padding: 4px 0; vertical-align: top; }
+  td:first-child { width: 8.5em; color: #666; white-space: nowrap; }
 
-    /* Hero */
-    .hero-bg { background: linear-gradient(135deg, #f3f8ff 0%, #ffffff 55%, #f7fbff 100%); border-bottom: 1px solid var(--line); }
-    .hero { display: grid; grid-template-columns: 260px 1fr; gap: 56px; align-items: center; padding-top: 96px; padding-bottom: 84px; }
-    .portrait { width: 260px; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; background: var(--accent-soft); position: relative; border: 6px solid #fff; box-shadow: 0 24px 48px -28px rgba(47,111,222,.45); }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; }
-    .portrait .fallback { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--serif-en); font-size: 4rem; color: var(--accent); }
-    .hero h1 { font-family: var(--serif-en); font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.15; margin: 0 0 6px; }
-    html[lang="ja"] .hero h1 { font-family: var(--serif-ja); }
-    .hero .sub { color: var(--muted); margin: 0 0 4px; }
-    .hero .affil { font-size: .95rem; margin: 0 0 22px; color: var(--accent); font-weight: 500; }
-    .hero .lead { margin: 0 0 28px; max-width: 58ch; }
-    .links { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip { display: inline-flex; align-items: center; gap: 6px; font-size: .82rem; font-weight: 500; padding: 7px 15px; border: 1px solid var(--line); border-radius: 999px; color: var(--text); background: #fff; transition: .2s; }
-    .chip:hover { border-color: var(--accent); color: #fff; background: var(--accent); text-decoration: none; }
-    @media (max-width: 760px) {
-      .hero { grid-template-columns: 1fr; gap: 32px; padding-top: 56px; text-align: center; }
-      .portrait { width: 200px; margin: 0 auto; }
-      .hero .lead { margin-inline: auto; }
-      .links { justify-content: center; }
-    }
+  .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .photos figure { margin: 0; }
+  .photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .photos figcaption { font-size: .85em; color: #666; margin-top: 2px; }
 
-    /* Cards */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
-    .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .25s, box-shadow .25s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -22px rgba(47,111,222,.35); }
-    .card .thumb { aspect-ratio: 16 / 9; background: var(--accent-soft); }
-    .card .thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .card .body { padding: 20px 22px 24px; }
-    .card h3 { margin: 0 0 8px; font-size: 1.05rem; font-weight: 600; }
-    .card p { margin: 0; color: var(--muted); font-size: .92rem; }
-
-    /* Lists */
-    .list { list-style: none; margin: 0; padding: 0; }
-    .list li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-    .list li:last-child { border-bottom: 0; }
-    .list .when { color: var(--accent); font-size: .88rem; font-weight: 500; }
-    @media (max-width: 560px) { .list li { grid-template-columns: 1fr; gap: 2px; } }
-
-    /* Publications */
-    .pub-year { font: 600 .8rem var(--sans); color: var(--accent); letter-spacing: .12em; margin: 28px 0 8px; }
-    .pub { padding: 14px 0; border-bottom: 1px solid var(--line); }
-    .pub .title { font-weight: 600; }
-    .pub .authors { color: var(--muted); font-size: .92rem; }
-    .pub .authors b { color: var(--text); }
-    .pub .venue { font-style: italic; font-size: .92rem; }
-    .pub .tags { margin-top: 6px; display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag { font-size: .72rem; font-weight: 500; padding: 2px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
-    a.tag:hover { text-decoration: none; background: var(--accent); color: #fff; }
-
-    /* Gallery */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-    .gallery figure { margin: 0; }
-    .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; background: var(--accent-soft); cursor: zoom-in; }
-    .gallery figcaption { font-size: .8rem; color: var(--muted); margin-top: 6px; }
-    .lightbox { position: fixed; inset: 0; background: rgba(255,255,255,.94); display: none; align-items: center; justify-content: center; z-index: 100; padding: 32px; cursor: zoom-out; }
-    .lightbox.open { display: flex; }
-    .lightbox img { max-height: 88vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.18); }
-
-    /* Contact */
-    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .contact dl { margin: 0; display: grid; grid-template-columns: 110px 1fr; row-gap: 10px; }
-    .contact dt { color: var(--muted); font-size: .88rem; }
-    .contact dd { margin: 0; }
-    @media (max-width: 760px) { .contact { grid-template-columns: 1fr; } }
-
-    footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 40px 24px 56px; border-top: 1px solid var(--line); }
-
-    /* フェードイン（JSが動いた時だけ適用＝失敗しても真っ白にならない） */
-    .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
-    .js .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
-  </style>
+  footer { margin-top: 56px; font-size: .85em; color: #999; }
+</style>
 </head>
-
 <body>
-  <header>
-    <nav class="nav" aria-label="Main">
-      top" class="brand"><span data-lang="ja">松本 宗真</span><span data-lang="en">Soma Matsumoto</span></a>
-      <ul class="nav-links">
-        <li>#research<span data-lang="ja">研究</span><span data-lang="en">Research</span></a></li>
-        <li>publications"><span data-lang="ja">業績</span><span data-lang="en">Publications</span></a></li>
-        <li>#news<span data-lang="ja">お知らせ</span><span data-lang="en">News</span></a></li>
-        <li>#career<span data-lang="ja">経歴</span><span data-lang="en">Career</span></a></li>
-        <li>ery"><span data-lang="ja">写真</span><span data-lang="en">Gallery</span></a></li>
-        <li>#contact><span data-lang="ja">連絡先</span><span data-lang="en">Contact</span></a></li>
-      </ul>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" data-set-lang="ja" aria-pressed="true">日本語</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-    </nav>
-  </header>
+<div class="page">
 
-  <div class="hero-bg" id="top">
-    <div class="wrap hero reveal">
-      <div class="portrait">
-        <!-- プロフィール写真：images/profile.jpg -->
-        images/profile.jpg
-        <div class="fallback" aria-hidden="true">SM</div>
-      </div>
-      <div>
-        <h1><span data-lang="ja">松本 宗真</span><span data-lang="en">Soma Matsumoto</span></h1>
-        <p class="sub"><span data-lang="ja">Soma Matsumoto</span><span data-lang="en">松本 宗真</span></p>
-        <p class="affil">
-          <span data-lang="ja">研究員 ／ ○○株式会社 技術開発部門</span>
-          <span data-lang="en">Researcher / Technology Development Division, ○○ Inc.</span>
-        </p>
-        <p class="lead">
-          <span data-lang="ja">○○の研究に取り組んでいます。特に△△と□□の融合により、実社会の課題を解決する技術の開発を目指しています。</span>
-          <span data-lang="en">I work on ○○, with a particular focus on bridging △△ and □□ to develop technologies that address real-world challenges.</span>
-        </p>
-        <div class="links">
-          you@example.com
-          https://scholar.google.com/Google Scholar</a>
-          https://researchmap.jp/researchmap</a>
-          https://orcid.org/ORCID</a>
-          https://github.com/GitHub</a>
-          files/cv.pdfCV (PDF)</a>
-        </div>
-      </div>
+  <div class="top">
+    <h1>
+      <span data-lang="ja">松本 宗真<small>Soma Matsumoto</small></span>
+      <span data-lang="en">Soma Matsumoto<small>松本 宗真</small></span>
+    </h1>
+    <div class="switch">
+      <button type="button" data-set="ja">日本語</button> /
+      <button type="button" data-set="en">English</button>
     </div>
   </div>
 
-  <main>
-    <section id="research">
-      <div class="wrap reveal">
-        <h2><span class="num">01</span><span data-lang="ja">研究テーマ</span><span data-lang="en">Research</span></h2>
-        <div class="grid">
-          <article class="card">
-            <div class="thumb">.jpg" alt="" onerror="this.style.display='none'"></div>
-            <div class="body">
-              <h3><span data-lang="ja">研究テーマ A</span><span data-lang="en">Research Theme A</span></h3>
-              <p><span data-lang="ja">テーマの概要を2〜3行で記述します。目的・手法・成果を簡潔に。</span><span data-lang="en">A brief summary of the theme: goal, approach, and outcomes.</span></p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="thumb">images/research2.jpg</div>
-            <div class="body">
-              <h3><span data-lang="ja">研究テーマ B</span><span data-lang="en">Research Theme B</span></h3>
-              <p><span data-lang="ja">テーマの概要を2〜3行で記述します。</span><span data-lang="en">A brief summary of the second research theme.</span></p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="thumb">/research3.jpg" alt="" onerror="this.style.display='none'"></div>
-            <div class="body">
-              <h3><span data-lang="ja">研究テーマ C</span><span data-lang="en">Research Theme C</span></h3>
-              <p><span data-lang="ja">テーマの概要を2〜3行で記述します。</span><span data-lang="en">A brief summary of the third research theme.</span></p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+  <div class="profile">
+    <!-- 写真：images/profile.jpg を置くと表示されます -->
+    <div class="photo" data-img="images/profile.jpg"></div>
+    <div>
+      <p class="affil">
+        <span data-lang="ja">（会社名）技術開発マネジメント部</span>
+        <span data-lang="en">Technology Development Management Dept., (Company)</span>
+      </p>
+      <p>
+        <span data-lang="ja">（専門分野）を中心に研究しています。最近は（テーマ）に取り組んでいます。</span>
+        <span data-lang="en">My research focuses on (field). I am currently working on (topic).</span>
+      </p>
+      <p class="links">
+        <span data-link="mailto:you@example.com">Email</span>
+        <span data-link="https://researchmap.jp/">researchmap</span>
+        <span data-link="https://scholar.google.com/">Google Scholar</span>
+        <span data-link="https://orcid.org/">ORCID</span>
+        <span data-link="https://github.com/">GitHub</span>
+        <span data-link="files/cv.pdf">CV</span>
+      </p>
+    </div>
+  </div>
 
-    <section id="publications" class="alt">
-      <div class="wrap reveal">
-        <h2><span class="num">02</span><span data-lang="ja">研究業績</span><span data-lang="en">Publications</span></h2>
-        <div class="pub-year">2026</div>
-        <div class="pub">
-          <div class="title">Title of the Paper Goes Here</div>
-          <div class="authors"><b>S. Matsumoto</b>, A. Coauthor, B. Coauthor</div>
-          <div class="venue">Proceedings of the XXX Conference, 2026</div>
-          <div class="tags">#PDF</a>#DOI</a>#</div>
-        </div>
-        <div class="pub-year">2025</div>
-        <div class="pub">
-          <div class="title"><span data-lang="ja">日本語論文タイトル</span><span data-lang="en">Japanese Paper Title (in English)</span></div>
-          <div class="authors"><span data-lang="ja"><b>松本 宗真</b>, 共著者 太郎</span><span data-lang="en"><b>S. Matsumoto</b>, T. Coauthor</span></div>
-          <div class="venue"><span data-lang="ja">○○学会論文誌, Vol. X, No. Y, 2025</span><span data-lang="en">Transactions of ○○ Society, Vol. X, No. Y, 2025</span></div>
-          <div class="tags">#PDF</a></div>
-        </div>
-      </div>
-    </section>
+  <h2><span data-lang="ja">研究内容</span><span data-lang="en">Research</span></h2>
+  <ul>
+    <li><span data-lang="ja">（研究テーマ1）</span><span data-lang="en">(Topic 1)</span></li>
+    <li><span data-lang="ja">（研究テーマ2）</span><span data-lang="en">(Topic 2)</span></li>
+  </ul>
 
-    <section id="news">
-      <div class="wrap reveal">
-        <h2><span class="num">03</span><span data-lang="ja">お知らせ</span><span data-lang="en">News</span></h2>
-        <ul class="list">
-          <li><span class="when">2026.10</span><span><span data-lang="ja">個人ホームページを公開しました。</span><span data-lang="en">Launched my personal website.</span></span></li>
-          <li><span class="when">2026.09</span><span><span data-lang="ja">○○国際会議で発表しました。</span><span data-lang="en">Presented at the ○○ International Conference.</span></span></li>
-        </ul>
-      </div>
-    </section>
+  <h2><span data-lang="ja">業績</span><span data-lang="en">Publications</span></h2>
+  <ol class="pubs" reversed>
+    <li>
+      <b>S. Matsumoto</b>, A. Author, B. Author.
+      <span class="t">Paper title.</span>
+      <span class="v">Proceedings of XXX</span>, 2026.
+      <span class="x"><span data-link="#">[PDF]</span> <span data-link="#">[DOI]</span></span>
+    </li>
+    <li>
+      <span data-lang="ja"><b>松本 宗真</b>, 共著者.「論文タイトル」. <span class="v">○○学会論文誌</span>, Vol. X, No. Y, 2025.</span>
+      <span data-lang="en"><b>S. Matsumoto</b>, Co-author. "Paper title." <span class="v">Trans. of XXX</span>, Vol. X, No. Y, 2025. (in Japanese)</span>
+    </li>
+  </ol>
 
-    <section id="career" class="alt">
-      <div class="wrap reveal">
-        <h2><span class="num">04</span><span data-lang="ja">経歴</span><span data-lang="en">Career</span></h2>
-        <ul class="list">
-          <li><span class="when">2024 –</span><span><span data-lang="ja">○○株式会社 技術開発部門</span><span data-lang="en">Technology Development Division, ○○ Inc.</span></span></li>
-          <li><span class="when">2022 – 2024</span><span><span data-lang="ja">○○大学大学院 ○○研究科 修士課程</span><span data-lang="en">M.S., Graduate School of ○○, ○○ University</span></span></li>
-        </ul>
-      </div>
-    </section>
+  <h2><span data-lang="ja">経歴</span><span data-lang="en">Career</span></h2>
+  <table>
+    <tr><td>2024 –</td><td><span data-lang="ja">（会社名）技術開発マネジメント部</span><span data-lang="en">(Company), Technology Development Management Dept.</span></td></tr>
+    <tr><td>2022 – 2024</td><td><span data-lang="ja">（大学名）大学院 修士課程</span><span data-lang="en">M.S., (University)</span></td></tr>
+  </table>
 
-    <section id="gallery">
-      <div class="wrap reveal">
-        <h2><span class="num">05</span><span data-lang="ja">写真</span><span data-lang="en">Gallery</span></h2>
-        <!-- 写真の追加：figure をコピーして src を変更 -->
-        <div class="gallery">
-          <figure>
-            images/gallery1.jpg
-            <figcaption><span data-lang="ja">○○学会にて発表（2026）</span><span data-lang="en">Talk at ○○ Conference (2026)</span></figcaption>
-          </figure>
-          <figure>
-            images/gallery2.jpg
-            <figcaption><span data-lang="ja">実験装置</span><span data-lang="en">Experimental setup</span></figcaption>
-          </figure>
-          <figure>
-            images/gallery3.jpg
-            <figcaption><span data-lang="ja">研究室の様子</span><span data-lang="en">At the lab</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+  <h2><span data-lang="ja">写真</span><span data-lang="en">Photos</span></h2>
+  <!-- 写真を増やすときは figure を1つコピーして data-img を書き換える -->
+  <div class="photos">
+    <figure data-img="images/photo1.jpg">
+      <figcaption><span data-lang="ja">学会発表（2026年）</span><span data-lang="en">Conference talk, 2026</span></figcaption>
+    </figure>
+    <figure data-img="images/photo2.jpg">
+      <figcaption><span data-lang="ja">実験の様子</span><span data-lang="en">Experiment</span></figcaption>
+    </figure>
+  </div>
 
-    <section id="contact" class="alt">
-      <div class="wrap reveal">
-        <h2><span class="num">06</span><span data-lang="ja">連絡先</span><span data-lang="en">Contact</span></h2>
-        <div class="contact">
-          <dl>
-            <dt>Email</dt>
-            <dd>you@example.comyou [at] example.com</a></dd>
-            <dt><span data-lang="ja">所在地</span><span data-lang="en">Location</span></dt>
-            <dd><span data-lang="ja">神奈川県平塚市</span><span data-lang="en">Hiratsuka, Kanagawa, Japan</span></dd>
-          </dl>
-          <p style="margin:0;color:var(--muted)">
-            <span data-lang="ja">共同研究・講演のご依頼など、お気軽にご連絡ください。</span>
-            <span data-lang="en">Feel free to reach out regarding collaborations or speaking opportunities.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <h2><span data-lang="ja">連絡先</span><span data-lang="en">Contact</span></h2>
+  <p>you [at] example.com</p>
 
   <footer>
-    &copy; <span id="year">2026</span> Soma Matsumoto ·
-    <span data-lang="ja">最終更新 2026年10月</span><span data-lang="en">Last updated Oct 2026</span>
+    <span data-lang="ja">最終更新：2026年10月</span><span data-lang="en">Last updated: October 2026</span>
   </footer>
+</div>
 
-  <div class="lightbox" id="lightbox"><img alt=""></div>
+<script>
+(function () {
+  // data-link → リンクに変換
+  document.querySelectorAll('[data-link]').forEach(function (el) {
+    var a = document.createElement('a');
+    var url = el.getAttribute('data-link');
+    a.href = url;
+    if (/^https?:/.test(url)) { a.target = '_blank'; a.rel = 'noopener'; }
+    while (el.firstChild) a.appendChild(el.firstChild);
+    el.replaceWith(a);
+  });
 
-  <script>
-    (function () {
-      var root = document.documentElement;
+  // data-img → 画像を挿入（ファイルが無ければ枠ごと非表示）
+  document.querySelectorAll('[data-img]').forEach(function (box) {
+    var img = document.createElement('img');
+    img.src = box.getAttribute('data-img');
+    img.alt = '';
+    img.loading = 'lazy';
+    img.onerror = function () { box.style.display = 'none'; };
+    box.insertBefore(img, box.firstChild);
+  });
 
-      // 言語切り替え
-      var buttons = document.querySelectorAll('[data-set-lang]');
-      var titles = { ja: '松本 宗真 | 研究者ホームページ', en: 'Soma Matsumoto | Researcher' };
-      function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
-      function setLang(lang) {
-        root.lang = lang;
-        document.title = titles[lang];
-        buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang); });
-        store('lang', lang);
-      }
-      var param = new URLSearchParams(location.search).get('lang');
-      var saved = store('lang');
-      var browser = (navigator.language || 'ja').indexOf('ja') === 0 ? 'ja' : 'en';
-      setLang(param === 'ja' || param === 'en' ? param : (saved === 'ja' || saved === 'en' ? saved : browser));
-      buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); }); });
-
-      // ギャラリー拡大
-      var lb = document.getElementById('lightbox');
-      var lbImg = lb.querySelector('img');
-      document.querySelectorAll('.gallery img').forEach(function (img) {
-        img.addEventListener('click', function () { lbImg.src = img.src; lb.classList.add('open'); });
-      });
-      lb.addEventListener('click', function () { lb.classList.remove('open'); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
-
-      // フェードイン
-      var els = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-        }, { threshold: 0.1 });
-        els.forEach(function (el) { io.observe(el); });
-      } else {
-        els.forEach(function (el) { el.classList.add('in'); });
-      }
-
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
-  </script>
+  // 言語切り替え
+  var buttons = document.querySelectorAll('[data-set]');
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    buttons.forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-set') === lang); });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  var q = new URLSearchParams(location.search).get('lang');
+  setLang(q === 'en' || q === 'ja' ? q : saved === 'en' || saved === 'ja' ? saved : 'ja');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); });
+  });
+})();
+</script>
 </body>
 </html>
