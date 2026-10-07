@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>松本 宗真 / Soma Matsumoto</title>
 <style>
+  :root {
+    --jp-font: "Meiryo UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Yu Gothic UI", Meiryo, "Helvetica Neue", Arial, sans-serif;
+    --en-font: "Segoe UI", "Meiryo UI", "Helvetica Neue", Arial, sans-serif;
+  }
+
   body {
     margin: 0;
     background: #fdfdfc;
     color: #222;
-    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--jp-font);
     font-size: 16px;
     line-height: 1.8;
+  }
+  html[lang="en"],
+  html[lang="en"] body {
+    font-family: var(--en-font);
   }
   .page { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
   a { color: #1a5a96; }
